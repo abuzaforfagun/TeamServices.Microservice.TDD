@@ -1,21 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TeamServices.Microservice.TDD.Domain.Models;
+using TeamServices.Microservice.TDD.Repository;
 
 namespace TeamServices.Microservice.TDD.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TeamsController
+    public class TeamsController : Controller
     {
-        public IList<Team> GetAll()
+        private readonly ITeamRepository repository;
+
+        public TeamsController(ITeamRepository repository)
         {
-            return new List<Team>
-            {
-                new Team("Team 1", new Guid()),
-                new Team("Team 2", new Guid())
-            };
+            this.repository = repository;
+        }
+        public IActionResult GetAll()
+        {
+            return Ok(repository.GetTeams());
+        }
+
+        public void Add(Team team)
+        {
+            this.repository.AddTeam(team);
         }
     }
 }
