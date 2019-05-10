@@ -22,14 +22,19 @@ namespace TeamServices.Microservice.TDD.Repository
             this.teams = teams;
         }
 
-        public void AddTeam(Team team)
+        public Team AddTeam(Team team)
         {
+            if (this.teams.First(t => t.Id == team.Id) != null)
+            {
+                return null;
+            }
             teams.Add(team);
+            return teams.Last();
         }
 
         public Team GetTeam(Guid id)
         {
-            return this.teams.Single(t => t.Id == id);
+            return this.teams.SingleOrDefault(t => t.Id == id);
         }
 
         public IList<Team> GetTeams()

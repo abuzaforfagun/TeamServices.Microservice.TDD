@@ -9,6 +9,6 @@ namespace TeamServices.Microservice.TDD.Repository
     {
         IList<Team> GetTeams();
         Team GetTeam(Guid id);
-        void AddTeam(Team team);
+        Team AddTeam(Team team);
     }
 }

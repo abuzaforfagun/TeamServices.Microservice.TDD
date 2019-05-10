@@ -1,13 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq;
 using TeamServices.Microservice.TDD.Controllers;
 using TeamServices.Microservice.TDD.Domain.Models;
-using TeamServices.Microservice.TDD.Repository;
 using Xunit;
-using Microsoft.AspNetCore.Mvc.Abstractions;
 using TeamServices.Microservice.TDD.Tests.Presistance;
+using ObjectResult = Microsoft.AspNetCore.Mvc.ObjectResult;
 
 namespace TeamServices.Microservice.TDD.Tests
 {
@@ -30,7 +29,42 @@ namespace TeamServices.Microservice.TDD.Tests
             controller.Add(team);
             var currentTeamCount = (((controller.GetAll() as OkObjectResult).Value) as IList<Team>).Count;
             Assert.Equal(currentTeamCount, previousTeamCount + 1);
+        }
 
+        [Fact]
+        public void Add_WithValidTeam_ShouldReturn_OkResult()
+        {
+            var guid = Guid.NewGuid();
+            var team = new Team("Dhaka", guid);
+            var result = controller.Add(team);
+            Assert.True(result is OkResult);
+        }
+
+        [Fact]
+        public void Add_WithValidTeam_ShouldReturn_NewlyAddedTeamDetails()
+        {
+            var guid = Guid.NewGuid();
+            var team = new Team("Dhaka", guid);
+            var result = (controller.Add(team) as ObjectResult).Value as Team;
+            Assert.Equal(result.Name, team.Name);
+            Assert.Equal(result.Id, team.Id);
+        }
+
+        [Fact]
+        public void Add_WithOutGuId_ShouldAddItem_WithDefaultGuId()
+        {
+            var team = new Team("New team");
+            controller.Add(team);
+            var addedTeam = (((controller.GetAll() as OkObjectResult).Value) as IList<Team>).Last();
+            Assert.Equal(addedTeam.Id, Guid.Empty);
+        }
+
+        [Fact]
+        public void Add_WithExistingId_ShouldReturn_BadRequest()
+        {
+            var team = new Team("New team");
+            var result = controller.Add(team);
+            Assert.True(result is BadRequestResult);
         }
 
         [Fact]
@@ -44,5 +78,15 @@ namespace TeamServices.Microservice.TDD.Tests
             Assert.Equal(result.Name, team.Name);
             Assert.Equal(result.Id, guId);
         }
+
+        [Fact]
+        public void GetTeam_CallWithInvalidTeamId_ShoudReturn_NotFound()
+        {
+            var guId = Guid.NewGuid();
+
+            var result = controller.Get(guId);
+            Assert.True(result is NotFoundResult);
+        }
+        
     }
 }
