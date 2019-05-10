@@ -22,6 +22,11 @@ namespace TeamServices.Microservice.TDD.Controllers
             return Ok(repository.GetTeams());
         }
 
+        public IActionResult Get(Guid id)
+        {
+            return Ok(repository.GetTeam(id));
+        }
+
         public void Add(Team team)
         {
             this.repository.AddTeam(team);

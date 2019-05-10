@@ -32,5 +32,17 @@ namespace TeamServices.Microservice.TDD.Tests
             Assert.Equal(currentTeamCount, previousTeamCount + 1);
 
         }
+
+        [Fact]
+        public void GetTeam_CallWithValidTeamId_ShoudReturn_CorrectTeam()
+        {
+            var guId = Guid.NewGuid();
+            var team = new Team("Barca", guId);
+            controller.Add(team);
+
+            var result = (controller.Get(guId) as ObjectResult).Value as Team;
+            Assert.Equal(result.Name, team.Name);
+            Assert.Equal(result.Id, guId);
+        }
     }
 }

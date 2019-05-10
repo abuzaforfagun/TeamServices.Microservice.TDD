@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using TeamServices.Microservice.TDD.Domain.Models;
 
 namespace TeamServices.Microservice.TDD.Repository
@@ -25,6 +25,11 @@ namespace TeamServices.Microservice.TDD.Repository
         public void AddTeam(Team team)
         {
             teams.Add(team);
+        }
+
+        public Team GetTeam(Guid id)
+        {
+            return this.teams.Single(t => t.Id == id);
         }
 
         public IList<Team> GetTeams()

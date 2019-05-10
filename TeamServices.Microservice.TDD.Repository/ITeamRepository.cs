@@ -8,6 +8,7 @@ namespace TeamServices.Microservice.TDD.Repository
     public interface ITeamRepository
     {
         IList<Team> GetTeams();
+        Team GetTeam(Guid id);
         void AddTeam(Team team);
     }
 }
