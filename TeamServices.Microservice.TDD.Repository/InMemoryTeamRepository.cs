@@ -11,10 +11,7 @@ namespace TeamServices.Microservice.TDD.Repository
 
         public InMemoryTeamRepository()
         {
-            if (teams == null)
-            {
-                teams = new List<Team>();
-            }
+            teams = teams == null ? new List<Team>() : teams;
         }
 
         public InMemoryTeamRepository(IList<Team> teams)
@@ -24,7 +21,7 @@ namespace TeamServices.Microservice.TDD.Repository
 
         public Team AddTeam(Team team)
         {
-            if (this.teams.FirstOrDefault(t => t.Id == team.Id) != null)
+            if (teams.FirstOrDefault(t => t.Id == team.Id) != null)
             {
                 return null;
             }
@@ -32,15 +29,9 @@ namespace TeamServices.Microservice.TDD.Repository
             return teams.Last();
         }
 
-        public Team GetTeam(Guid id)
-        {
-            return this.teams.SingleOrDefault(t => t.Id == id);
-        }
+        public Team GetTeam(Guid id) => this.teams.SingleOrDefault(t => t.Id == id);
 
-        public IList<Team> GetTeams()
-        {
-            return teams;
-        }
+        public IList<Team> GetTeams() => teams;
 
         public Member AddMember(Guid teamId, Member member)
         {

@@ -21,31 +21,19 @@ namespace TeamServices.Microservice.TDD.Controllers
         public IActionResult GetAll()
         {
             var result = repository.GetTeams();
-            if (result.Count == 0)
-            {
-                return NoContent();
-            }
-            return Ok(result);
+            return result.Count == 0 ? NoContent() : (IActionResult)Ok(result);
         }
 
         public IActionResult Get(Guid id)
         {
             var result = repository.GetTeam(id);
-            if (result == null)
-            {
-                return NotFound();
-            }
-            return Ok(repository.GetTeam(id));
+            return result == null ? NotFound() : (IActionResult)Ok(result);
         }
 
         public IActionResult Add(Team team)
         {
-            var result = this.repository.AddTeam(team);
-            if (result == null)
-            {
-                return BadRequest();
-            }
-            return Ok(result);
+            var result = repository.AddTeam(team);
+            return result == null ? BadRequest() : (IActionResult) Ok(result);
         }
     }
 }

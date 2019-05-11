@@ -29,11 +29,7 @@ namespace TeamServices.Microservice.TDD.Controllers
             }
 
             var addedMember = repository.AddMember(teamId, member);
-            if (addedMember == null)
-            {
-                return BadRequest();
-            }
-            return Ok(member);
+            return addedMember == null ? BadRequest() : (IActionResult) Ok(member);
         }
     }
 }

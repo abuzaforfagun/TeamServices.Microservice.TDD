@@ -41,7 +41,7 @@ namespace TeamServices.Microservice.TDD.Tests.Presistance
         {
             var team = ((teamController.GetAll() as ObjectResult).Value as IList<Team>).Last();
             var result = memberController.Add(team.Id, new Member("Abu Zafor", "Fagun", Guid.NewGuid()));
-            Assert.True(result is OkResult);
+            Assert.True(result is OkObjectResult);
         }
 
         [Fact]
