@@ -10,5 +10,6 @@ namespace TeamServices.Microservice.TDD.Repository
         IList<Team> GetTeams();
         Team GetTeam(Guid id);
         Team AddTeam(Team team);
+        Member AddMember(Guid teamId, Member member);
     }
 }

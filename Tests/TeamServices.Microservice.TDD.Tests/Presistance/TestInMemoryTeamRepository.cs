@@ -15,7 +15,12 @@ namespace TeamServices.Microservice.TDD.Tests.Presistance
 
         private static IList<Team> AddInitialItems()
         {
-            return new List<Team> {new Team("team a"), new Team("team b")};
+            var teamA = new Team("team a", Guid.NewGuid());
+            var teamB = new Team("team B", Guid.NewGuid())
+            {
+                Members = new List<Member>() { new Member("Shaon", "", Guid.NewGuid())}
+            };
+            return new List<Team> {teamA, teamB};
         }
     }
 }

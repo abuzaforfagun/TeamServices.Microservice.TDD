@@ -24,7 +24,7 @@ namespace TeamServices.Microservice.TDD.Repository
 
         public Team AddTeam(Team team)
         {
-            if (this.teams.First(t => t.Id == team.Id) != null)
+            if (this.teams.FirstOrDefault(t => t.Id == team.Id) != null)
             {
                 return null;
             }
@@ -40,6 +40,17 @@ namespace TeamServices.Microservice.TDD.Repository
         public IList<Team> GetTeams()
         {
             return teams;
+        }
+
+        public Member AddMember(Guid teamId, Member member)
+        {
+            var team = this.teams.Single(t => t.Id == teamId);
+            if (team.Members.SingleOrDefault(m => m.Id == member.Id) != null)
+            {
+                return null;
+            }
+            team.Members.Add(member);
+            return member;
         }
     }
 }
