@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using TeamServices.Microservice.TDD.Controllers;
 using TeamServices.Microservice.TDD.Domain.Models;
@@ -20,9 +19,8 @@ namespace TeamServices.Microservice.TDD.Tests.Presistance
             repository = new TestInMemoryTeamRepository();
             teamController = new TeamsController(repository);
             memberController = new MemberController(repository);
-
-
         }
+
         [Fact]
         public void Add_CalledWithValidTeamId_ShouldAddMember()
         {

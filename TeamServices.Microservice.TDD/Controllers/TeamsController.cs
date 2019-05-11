@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TeamServices.Microservice.TDD.Domain.Models;
 using TeamServices.Microservice.TDD.Repository;
