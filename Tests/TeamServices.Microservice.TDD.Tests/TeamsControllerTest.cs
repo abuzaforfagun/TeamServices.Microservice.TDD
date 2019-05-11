@@ -37,7 +37,7 @@ namespace TeamServices.Microservice.TDD.Tests
             var guid = Guid.NewGuid();
             var team = new Team("Dhaka", guid);
             var result = controller.Add(team);
-            Assert.True(result is OkResult);
+            Assert.True(result is OkObjectResult);
         }
 
         [Fact]
@@ -62,7 +62,8 @@ namespace TeamServices.Microservice.TDD.Tests
         [Fact]
         public void Add_WithExistingId_ShouldReturn_BadRequest()
         {
-            var team = new Team("New team");
+            var teams = (controller.GetAll() as ObjectResult).Value as IList<Team>;
+            var team = new Team("New team", teams.Last().Id);
             var result = controller.Add(team);
             Assert.True(result is BadRequestResult);
         }
