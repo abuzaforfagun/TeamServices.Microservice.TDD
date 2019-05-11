@@ -13,6 +13,11 @@ namespace TeamServices.Microservice.TDD.Tests.Presistance
             
         }
 
+        public TestInMemoryTeamRepository(bool isEmptyTeam)
+        {
+            
+        }
+
         private static IList<Team> AddInitialItems()
         {
             var teamA = new Team("team a", Guid.NewGuid());

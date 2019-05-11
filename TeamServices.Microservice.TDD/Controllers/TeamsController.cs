@@ -17,9 +17,15 @@ namespace TeamServices.Microservice.TDD.Controllers
         {
             this.repository = repository;
         }
+
         public IActionResult GetAll()
         {
-            return Ok(repository.GetTeams());
+            var result = repository.GetTeams();
+            if (result.Count == 0)
+            {
+                return NoContent();
+            }
+            return Ok(result);
         }
 
         public IActionResult Get(Guid id)

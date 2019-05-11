@@ -22,6 +22,15 @@ namespace TeamServices.Microservice.TDD.Tests
         }
 
         [Fact]
+        public void GetAll_ShouldReturn_NoContent_WhenNoTeamsAreAvailable()
+        {
+            var repository = new TestInMemoryTeamRepository(true);
+            var controller = new TeamsController(repository);
+            var result = controller.GetAll();
+            Assert.True(result is NoContentResult);
+        }
+
+        [Fact]
         public void Add_Should_AddItem()
         {
             var previousTeamCount = (((controller.GetAll() as OkObjectResult).Value) as IList<Team>).Count;
