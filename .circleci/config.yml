@@ -8,7 +8,7 @@ jobs:
             - run:
                 name: Restore Packages
                 command:
-                    dotnet restore
+                    dotnet restore ./
             - run:
                 name: Build App
                 command:
@@ -16,5 +16,5 @@ jobs:
             - run:
                 name: Run App
                 command: 
-                    dotnet run
+                     dotnet run --project ./TeamServices.Microservice.TDD/TeamServices.Microservice.TDD.csproj
              
