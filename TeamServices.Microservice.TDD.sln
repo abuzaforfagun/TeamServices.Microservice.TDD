@@ -11,7 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamServices.Microservice.T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamServices.Microservice.TDD.Domain", "TeamServices.Microservice.TDD.Domain\TeamServices.Microservice.TDD.Domain.csproj", "{1ACEC090-145C-44A8-8AAD-FAB100E2688B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamServices.Microservice.TDD.Repository", "TeamServices.Microservice.TDD.Repository\TeamServices.Microservice.TDD.Repository.csproj", "{AFE0A02D-F569-4C08-A2B5-C02048B75F10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamServices.Microservice.TDD.Repository", "TeamServices.Microservice.TDD.Repository\TeamServices.Microservice.TDD.Repository.csproj", "{AFE0A02D-F569-4C08-A2B5-C02048B75F10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationServices.Api", "LocationServices.Api\LocationServices.Api.csproj", "{3D54B5A0-C28F-4D8E-A656-EA4142FE84BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationServices.Tests", "LocationServices.Tests\LocationServices.Tests.csproj", "{B79CE036-5531-4D5C-A98A-AB7DD249EAFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationServices.Domain", "LocationServices.Domain\LocationServices.Domain.csproj", "{D5F3094F-9155-46EC-85C5-C2E978F194DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,12 +41,25 @@ Global
 		{AFE0A02D-F569-4C08-A2B5-C02048B75F10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFE0A02D-F569-4C08-A2B5-C02048B75F10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFE0A02D-F569-4C08-A2B5-C02048B75F10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D54B5A0-C28F-4D8E-A656-EA4142FE84BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D54B5A0-C28F-4D8E-A656-EA4142FE84BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D54B5A0-C28F-4D8E-A656-EA4142FE84BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D54B5A0-C28F-4D8E-A656-EA4142FE84BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B79CE036-5531-4D5C-A98A-AB7DD249EAFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B79CE036-5531-4D5C-A98A-AB7DD249EAFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B79CE036-5531-4D5C-A98A-AB7DD249EAFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B79CE036-5531-4D5C-A98A-AB7DD249EAFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5F3094F-9155-46EC-85C5-C2E978F194DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5F3094F-9155-46EC-85C5-C2E978F194DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5F3094F-9155-46EC-85C5-C2E978F194DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5F3094F-9155-46EC-85C5-C2E978F194DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{495BE6B2-012F-4930-AF7B-88946F0249E7} = {04AC9571-02B8-4669-BF36-736531F4B34E}
+		{B79CE036-5531-4D5C-A98A-AB7DD249EAFE} = {04AC9571-02B8-4669-BF36-736531F4B34E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {59AAAB57-FA3C-4AF3-A990-CA6367374609}
